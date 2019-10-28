@@ -1,5 +1,5 @@
 # Share-sliced AES implementation with 16-bit Thumb instructions
-This is the code archive of the CHES 2020 paper "Share-slicing: Friend or Foe". The main AES code is from [Virginia Tech's 1st order protected bit-sliced masked AES implementation] \(https://github.com/Secure-Embedded-Systems/Masked-AES-Implementation/tree/master/bitsliced-masked-aes). Originally, the authors used share-slicing, yet with a serial ISW multiplication. Here we choose the parallel mulitplication proposed in [BDF+17] instead. All the AES codes were written in C, except for the masked multiplication was written in Thumb assembly. We do NOT claim security for this implementation: the goal here is merely testing the masked multiplicaton: whether it can achieve the designed security order within this specific implementation setup.
+This is the code archive of the CHES 2020 paper "Share-slicing: Friend or Foe". The main AES code is from [Virginia Tech's 1st order protected bit-sliced masked AES implementation](https://github.com/Secure-Embedded-Systems/Masked-AES-Implementation/tree/master/bitsliced-masked-aes). Originally, the authors used share-slicing, yet with a serial ISW multiplication. Here we choose the parallel mulitplication proposed in [BDF+17] instead. All the AES codes were written in C, except for the masked multiplication was written in Thumb assembly. We do NOT claim security for this implementation: the goal here is merely testing the masked multiplicaton: whether it can achieve the designed security order within this specific implementation setup.
 
 ## Slicing style
 Following the notations in our CHES paper, when implementing bit-sliced masked implementation, engineers have several choices to make:
@@ -50,9 +50,12 @@ As Picoscope provides a rapid-block mode, the most efficient way of trace acquis
 ### Results
 Unlike in the paper, here we present the result of having one target block with all other bits set to zeros. This is in fact, not that easy in the whole scheme, as the computation cannot guarantee all other bits will remain 0 during the refreshing process. The trick we utilise here is to add code setting all other bits to 0 before each call to the target multiplication. In each encryption, the target multiplication will be repeated 200 times, which is the result of balancing the workload on board and PC. Each trace will be added to T test, where the unshared value 0 or 1 will be used as the flag. Detailed experimental setup can be found in the corresponding folder.
 
-For a 4-share version on an NXP LPC1114 \(Cortex M0\) core, we have  
+For a 4-share version on an NXP LPC1114 \(Cortex M0\) core, we have: 
 
  ![Ttest results](4shares/M0/500k_200x/1Plaintext7Zeros/M0_4share.png)
+Clearly leakage can be detected for all orders less than 4. Meanwhile, the same code (except for the multiplication uses shift left instead of shift right) on an NXP LPC1313 gives:
+
+  
 
 ## Reference
 [BDF+17] Gilles Barthe, François Dupressoir, Sebastian Faust, Benjamin Grégoire, François-Xavier Standaert, and Pierre-Yves Strub. Parallel implementations of masking schemes and the bounded moment leakage model. In Advances in Cryptology - EUROCRYPT 2017 - 36th Annual International Conference on the Theory and Applications of Cryptographic Techniques, Paris, France, April 30 - May 4, 2017, Proceedings, Part I, pages 535-566, 2017.
