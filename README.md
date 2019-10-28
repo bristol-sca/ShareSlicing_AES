@@ -52,7 +52,7 @@ Unlike in the paper, here we present the result of having one target block with 
 
 For a 4-share version on an NXP LPC1114 \(Cortex M0\) core, we have  
 
- ![Ttest results](4\ shares/M0/500k_200x/1Plaintext7Zeros.png)
+ ![Ttest results](4shares/M0/500k_200x/1Plaintext7Zeros/M0_4share.png)
 
 ## Reference
 [BDF+17] Gilles Barthe, François Dupressoir, Sebastian Faust, Benjamin Grégoire, François-Xavier Standaert, and Pierre-Yves Strub. Parallel implementations of masking schemes and the bounded moment leakage model. In Advances in Cryptology - EUROCRYPT 2017 - 36th Annual International Conference on the Theory and Applications of Cryptographic Techniques, Paris, France, April 30 - May 4, 2017, Proceedings, Part I, pages 535-566, 2017.
