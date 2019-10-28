@@ -1,0 +1,10 @@
+Sampling Rate: 	250MSa/s
+Samples:	600
+Scope:		Picoscope 2206B
+Clock source:	12MHz internal
+LowPass filter:	Off
+Amplifier:	On
+Vertical Resolution:	-0.15V +/- 500MV
+Measurement:	200traces as one batch, each trace will be refreshed with new randomness, yet with the same unshared value
+Only the target multiplication will be repeated 200 times(not the whole cipher).
+Num of traces:	200*500K=100M
