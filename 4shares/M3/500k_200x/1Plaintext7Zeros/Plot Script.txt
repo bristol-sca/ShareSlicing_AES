@@ -1,0 +1,81 @@
+subplot(321);
+hold;
+xlim([1 600]);
+ylim([-20 20]);
+xlabel('Time [*4ns]');
+ylabel('T statistic');
+title('1st order Ttest: 4-share LSL on M3, N=500k*200');
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+plot(x,[-y -y],'k--');
+plot(TLVATestBSSboxM344sharesO1);
+
+subplot(322);
+hold;
+xlim([1 500]);
+ylim([0 20]);
+xlabel('Number of traces [*1000*200]');
+ylabel('Abosulte T statistic');
+title('1st order Ttest: maxT v.s. N');
+plot(TtrendO1(1:500,:));
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+
+subplot(323);
+hold;
+xlim([1 600]);
+ylim([-20 20]);
+xlabel('Time [*4ns]');
+ylabel('T statistic');
+title('2nd order Ttest: 4-share LSL on M3, N=500k*200');
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+plot(x,[-y -y],'k--');
+plot(TLVATestBSSboxM344sharesO2);
+
+subplot(324);
+hold;
+xlim([1 500]);
+ylim([0 20]);
+xlabel('Number of traces [*1000*200]');
+ylabel('Abosulte T statistic');
+title('1st order Ttest: maxT v.s. N');
+plot(TtrendO2(1:500,:));
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+
+subplot(325);
+hold;
+xlim([1 600]);
+ylim([-20 20]);
+xlabel('Time [*4ns]');
+ylabel('T statistic');
+title('3rd order Ttest: 4-share LSL on M3, N=500k*200');
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+plot(x,[-y -y],'k--');
+plot(TLVATestBSSboxM344sharesO3);
+
+subplot(326);
+hold;
+xlim([1 500]);
+ylim([0 20]);
+xlabel('Number of traces [*1000*200]');
+ylabel('Abosulte T statistic');
+title('3rd order Ttest: maxT v.s. N');
+plot(TtrendO3(1:500,:));
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+
+end
+end
+x=get(gca,'xlim');
+y=4.5;
+plot(x,[y y],'k--');
+hold off;
