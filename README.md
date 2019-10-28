@@ -1,5 +1,5 @@
 # Share-sliced AES implementation with 16-bit Thumb instructions
-This is the code archive of the CHES 2020 paper "Share-slicing: Friend or Foe". The main AES code is from [Virginia Tech's 1st order protected bit-sliced masked AES implementation] \(https://github.com/Secure-Embedded-Systems/Masked-AES-Implementation/tree/master/bitsliced-masked-aes\). Originally, the authors used share-slicing, yet with a serial ISW multiplication. Here we choose the parallel mulitplication proposed in [BDF+17] instead. All the AES codes were written in C, except for the masked multiplication was written in Thumb assembly. We do NOT claim security for this implementation: the goal here is merely testing the masked multiplicaton: whether it can achieve the designed security order within this specific implementation setup.
+This is the code archive of the CHES 2020 paper "Share-slicing: Friend or Foe". The main AES code is from [Virginia Tech's 1st order protected bit-sliced masked AES implementation] \(https://github.com/Secure-Embedded-Systems/Masked-AES-Implementation/tree/master/bitsliced-masked-aes). Originally, the authors used share-slicing, yet with a serial ISW multiplication. Here we choose the parallel mulitplication proposed in [BDF+17] instead. All the AES codes were written in C, except for the masked multiplication was written in Thumb assembly. We do NOT claim security for this implementation: the goal here is merely testing the masked multiplicaton: whether it can achieve the designed security order within this specific implementation setup.
 
 ## Slicing style
 Following the notations in our CHES paper, when implementing bit-sliced masked implementation, engineers have several choices to make:
@@ -40,7 +40,7 @@ The last one is the most practical, yet we argue one should never use it as a te
 
 Suppose the attacker has no control on all other concurrent blocks, this is the realistic challenge he or she faces. However, for testing the assumption, this setup has quite low SNR, which makes verifying any assumption difficult. Unless users are looking for a specific application where the attacker is quite restrained, relying on this setup seems to be way too optimistic. 
  
-### Repeatition
+### Repetition
 As Picoscope provides a rapid-block mode, the most efficient way of trace acquisition would be taking a batch of traces at once, saving the UART communication time. Considering the full AES takes quite a while, in the 4-share version, we usually repeat the target multiplication directly several times to get multiple traces. All these traces will be from the same unshared data: however, whether the data shares are refreshed between loops depends on the following process.
 
 - If the following process is taking average of these traces, we believe it makes more sense to not refresh between loops. If the data shares are refreshed, the average of these traces will not have a meanful intepretion for all the higher order analysis.
@@ -52,7 +52,7 @@ Unlike in the paper, here we present the result of having one target block with 
 
 For a 4-share version on an NXP LPC1114 \(Cortex M0\) core, we have  
 
- ![Ttest results](4 shares\M0\500k_200x\1Plaintext7Zeros.png)
+ ![Ttest results](4\ shares/M0/500k_200x/1Plaintext7Zeros.png)
 
 ## Reference
 [BDF+17] Gilles Barthe, François Dupressoir, Sebastian Faust, Benjamin Grégoire, François-Xavier Standaert, and Pierre-Yves Strub. Parallel implementations of masking schemes and the bounded moment leakage model. In Advances in Cryptology - EUROCRYPT 2017 - 36th Annual International Conference on the Theory and Applications of Cryptographic Techniques, Paris, France, April 30 - May 4, 2017, Proceedings, Part I, pages 535-566, 2017.
