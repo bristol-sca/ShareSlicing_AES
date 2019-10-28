@@ -54,7 +54,9 @@ For a 4-share version on an NXP LPC1114 \(Cortex M0\) core, we have:
 
  ![LSR on M0](4shares/M0/500k_200x/1Plaintext7Zeros/M0_4share.png)
 Clearly leakage can be detected for all orders less than 4. Meanwhile, the same code (except for the multiplication uses shift left instead of shift right) on an NXP LPC1313 gives:
-![LSL on M3](4shares/M3/500k_200x/1Plaintext7Zeros/M3_4share.png)
+
+![LSL on M3](4shares/M3/500k_200x/1Plaintext7Zeros/M3_4shares.png)
+
 Ttest result resembles the M0. Note that here we got quite different result compared to the one in the paper: we do not know for sure what causes such difference, perhaps the way those traces are processed (in the paper, all traces in a batch are not refreshed and averaged before statisical test). Nonethelss, the final point remains exactly the same: there are bit-interaction in the measured leakage and one should not simply ignore such leakage. 
   
 
